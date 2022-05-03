@@ -48,6 +48,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -88,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.e("errorOccur", "Error");
         }
+        AppCenter.start(getApplication(), "{Your app secret here}",
+                  Analytics.class, Crashes.class);
         // customized searchView
         int id = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
         EditText searchEditText = (EditText) searchView.findViewById(id);
